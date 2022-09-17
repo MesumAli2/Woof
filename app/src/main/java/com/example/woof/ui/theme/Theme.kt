@@ -20,6 +20,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+
+
+//Dark Theme
+val White = Color(0xFFFFFFFF)
+val Grey100 = Color(0xFFF1F3F4)
+val Cyan900 = Color(0xFF007B83)
+val Cyan700 = Color(0xFF129EAF)
 
 private val DarkColorPalette = darkColors(
     primary = Purple200,

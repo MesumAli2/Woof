@@ -22,4 +22,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    //Light Theme
+    val Grey50 = Color(0xFFF8F9FA)
+    val Grey900 = Color(0xFF202124)
+    val Grey700 = Color(0xFF5F6368)
+    val Green50 = Color(0xFFE6F4EA)
+    val Green100 = Color(0xFFCEEAD6)
 </resources>

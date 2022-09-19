@@ -7,6 +7,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -29,6 +33,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.woof.data.Dog
 import com.example.woof.data.dogs
+import com.example.woof.ui.theme.Green100
+import com.example.woof.ui.theme.Green50
 import com.example.woof.ui.theme.Shapes
 import com.example.woof.ui.theme.WoofTheme
 
@@ -73,22 +79,21 @@ fun WoofApp() {
 fun DogItem(dog: Dog, modifier: Modifier = Modifier) {
     var expanded by remember{ mutableStateOf(false)}
 
+    val color by animateColorAsState(targetValue = if (expanded) Green50 else MaterialTheme.colors.surface)
+
     Card (modifier = modifier.padding(8.dp), elevation = 4.dp, shape = Shapes.medium){
-
-        Column() {
-
-
+        Column(modifier = Modifier.animateContentSize(animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy,
+        stiffness = Spring.StiffnessLow)).background(color = color)) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
-            ) {
+            )
+            {
                 DogIcon(dog.imageResourceId)
                 DogInformation(dog.name, dog.age)
                 Spacer(modifier = modifier.weight(1f))
                 DogItemButton(expanded = expanded, onClick = { expanded = !expanded })
-
-
             }
             if (expanded){
                 DogHobby(dogHobby = dog.hobbies)

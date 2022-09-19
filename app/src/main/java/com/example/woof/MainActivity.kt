@@ -181,7 +181,7 @@ private fun DogItemButton(
 ){
 
     IconButton(onClick = onClick ) {
-        Icon(imageVector = Icons.Filled.ExpandMore ,
+        Icon(imageVector = if (expanded)Icons.Filled.ExpandLess else Icons.Filled.ExpandMore ,
             tint = MaterialTheme.colors.secondary,
             contentDescription = stringResource(id = R.string.expand_button_content_description))
     }
